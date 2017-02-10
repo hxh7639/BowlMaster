@@ -11,13 +11,15 @@ public class CameraControll : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		offset = ball.rigidbody  // offset is ball position - 20 in Y direction
-
+		offset = transform.position - ball.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate
+
+		if (transform.position.z <= 1775f){
+		transform.position = ball.transform.position + offset;
+		}
 	}
 
 
