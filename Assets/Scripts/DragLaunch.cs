@@ -7,8 +7,8 @@ using UnityEngine;
 public class DragLaunch : MonoBehaviour {
 
 	private Ball ball;
-	private Vector3 launchVelocity;
-	private Vector3 swipPositionStart;
+	private Vector3 launchVelocity; // course declared this in the method, only make it available to the methods that needs it, don't put everything at this level
+	private Vector3 swipPositionStart;  // course decleared all the vectors together.
 	private Vector3 swipPositionEnd;
 	private float swipTimeStart;
 	private float swipTimeEnd;
@@ -28,9 +28,11 @@ public class DragLaunch : MonoBehaviour {
 	public void DragEnd(){
 	swipPositionEnd = Input.mousePosition;
 	swipTimeEnd = Time.time;
+	float swipDuration = swipTimeEnd - swipTimeStart;
 
-	launchVelocity.x = swipPositionEnd.x - swipPositionStart.x;
-	launchVelocity.z = (swipPositionEnd.y - swipPositionStart.y) / (swipTimeEnd - swipTimeStart);
+	// launchVelocity.x = swipPositionEnd.x - swipPositionStart.x;   // game used speed formula for x as well.
+	launchVelocity.x = (swipPositionEnd.x - swipPositionStart.x) / swipDuration; // look at course codes BM 195
+	launchVelocity.z = (swipPositionEnd.y - swipPositionStart.y) / swipDuration; // course made (timeEnd - timeStart) into a separate variable just in this method
 
 
 	ball.Launch(launchVelocity);
