@@ -19,6 +19,15 @@ public class DragLaunch : MonoBehaviour {
 		
 	}
 
+	public void MoveStart(float amount){
+
+		if (ball.inPlay == false){  // or normally !ball.inPlay
+		ball.transform.Translate (new Vector3 (amount,0,0));
+		}
+	}
+
+
+
 	public void DragStart(){
 	swipPositionStart = Input.mousePosition;
 	swipTimeStart = Time.time;
