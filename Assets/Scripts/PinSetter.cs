@@ -15,6 +15,7 @@ public class PinSetter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		pinText.text = CountStanding ().ToString ();
+
 	}
 
 	int CountStanding(){
@@ -25,5 +26,9 @@ public class PinSetter : MonoBehaviour {
 			}
 		}
 		return standingPinCount;
+	}
+
+	void OnTriggerEnter (Collider collider) {
+
 	}
 }

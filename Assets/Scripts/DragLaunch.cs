@@ -40,8 +40,8 @@ public class DragLaunch : MonoBehaviour {
 	float swipDuration = swipTimeEnd - swipTimeStart;
 
 	// launchVelocity.x = swipPositionEnd.x - swipPositionStart.x;   // game used speed formula for x as well.
-	launchVelocity.x = (swipPositionEnd.x - swipPositionStart.x) / swipDuration; // look at course codes BM 195
-	launchVelocity.z = (swipPositionEnd.y - swipPositionStart.y) / swipDuration; // course made (timeEnd - timeStart) into a separate variable just in this method
+	launchVelocity.x = ((swipPositionEnd.x - swipPositionStart.x) / swipDuration)/5; // look at course codes BM 195
+	launchVelocity.z = ((swipPositionEnd.y - swipPositionStart.y) / swipDuration)/2; // course made (timeEnd - timeStart) into a separate variable just in this method
 
 
 	ball.Launch(launchVelocity);
