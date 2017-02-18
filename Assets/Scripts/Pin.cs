@@ -12,7 +12,7 @@ public class Pin : MonoBehaviour {
 	}
 
 	public bool IsStanding(){
-		Vector3 greenVector = transform.up;
+		Vector3 greenVector = transform.forward;
 		float standThreshold = standingThreshold / 10;
 		float x = Mathf.Abs (greenVector.x);
 		float z = Mathf.Abs (greenVector.z);

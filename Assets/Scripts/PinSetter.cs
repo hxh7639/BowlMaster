@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PinSetter : MonoBehaviour {
 
 	public Text pinText;
+    private bool ballEnteredBox = false;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +29,21 @@ public class PinSetter : MonoBehaviour {
 		return standingPinCount;
 	}
 
-	void OnTriggerEnter (Collider collider) {
+    void OnTriggerExit (Collider collider){
+        GameObject thingLeftBox = collider.gameObject;
+        if (thingLeftBox.GetComponent<Pin>())
+        {
+            Destroy(thingLeftBox);
+        } 
+    }
 
-	}
+	void OnTriggerEnter (Collider collider) {
+        GameObject thingHit = collider.gameObject;
+        // ball enters play box
+        if (thingHit.GetComponent<Ball>())
+        {
+            ballEnteredBox = true;
+            pinText.color = Color.red;
+        }
+    }
 }
