@@ -19,7 +19,7 @@ public class DragLaunch : MonoBehaviour {
 		
 	}
 
-	public void MoveStart(float amount){
+	public void MoveStart(float amount){  // moving ball left/right at start
 
 		if (ball.inPlay == false){  // or normally !ball.inPlay
 		ball.transform.Translate (new Vector3 (amount,0,0));
