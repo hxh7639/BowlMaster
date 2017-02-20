@@ -34,7 +34,7 @@ public class PinSetter : MonoBehaviour {
 		Debug.Log ("Raising Pins");
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()){
 			if (pin.IsStanding()) {
-				pin.transform.Translate (new Vector3(0,0,distanceToRaise));
+				pin.transform.Translate (new Vector3(0,distanceToRaise,0), Space.World);  // transform.positon += supposed to work as well
 
 			}
 		}
