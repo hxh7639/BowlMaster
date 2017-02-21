@@ -7,7 +7,6 @@ public class PinSetter : MonoBehaviour {
 
     public int lastStandingCount = -1;
 	public Text pinText;
-	public float distanceToRaise = 40f;
 
     private Ball ball;
     private float lastChangeTime;
@@ -26,23 +25,20 @@ public class PinSetter : MonoBehaviour {
             CheckStanding();
 
         }
-
 	}
 
 	public void RaisePins (){
 		// raise standing pins only by distanceToRaise
-		Debug.Log ("Raising Pins");
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()){
-			if (pin.IsStanding()) {
-				pin.transform.Translate (new Vector3(0,distanceToRaise,0), Space.World);  // transform.positon += supposed to work as well
-
-			}
+			pin.RaiseIfStanding();
 		}
 	}
 
 	public void LowerPins (){
 		// Lower standing pins only by distanceToRaise
-		Debug.Log ("Lowering Pins");
+		foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()){
+				pin.Lower();
+		}
 	}
 
 	public void RenewPins (){

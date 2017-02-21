@@ -5,10 +5,31 @@ using UnityEngine;
 public class Pin : MonoBehaviour {
 
 	public float standingThreshold;
+	public float distToRaise = 40f;
 
+	private Rigidbody rigidBody;
 	// Use this for initialization
 	void Start () {
-		
+		rigidBody = GetComponent<Rigidbody> ();
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+	}
+
+	public void RaiseIfStanding(){
+		if (IsStanding()) {
+			rigidBody.useGravity = false;
+			transform.Translate (new Vector3(0,distToRaise,0), Space.World);  // transform.positon += supposed to work as well
+		}
+	}
+
+	public void Lower (){
+		if (IsStanding()) {
+			transform.Translate (new Vector3(0,-distToRaise,0), Space.World);  // transform.positon += supposed to work as well
+			rigidBody.useGravity = true;
+		}
 	}
 
 	public bool IsStanding(){
@@ -24,8 +45,7 @@ public class Pin : MonoBehaviour {
 
 }
 	
-	// Update is called once per frame
-	void Update () {
 
-	}
+
+
 }
