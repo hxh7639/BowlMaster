@@ -7,6 +7,7 @@ public class PinSetter : MonoBehaviour {
 
     public int lastStandingCount = -1;
 	public Text pinText;
+	public GameObject pinSet;
 
     private Ball ball;
     private float lastChangeTime;
@@ -20,10 +21,8 @@ public class PinSetter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		pinText.text = CountStanding ().ToString ();
-
-        if (ballEnteredBox){        // if ball has entered the box
-            CheckStanding();
-
+		if (ballEnteredBox){        // if ball has entered the box
+           	CheckStanding();
         }
 	}
 
@@ -43,6 +42,8 @@ public class PinSetter : MonoBehaviour {
 
 	public void RenewPins (){
 		Debug.Log ("Renew Pins");
+		GameObject newPins = Instantiate (pinSet);
+		newPins.transform.position += new Vector3 (0, 15,0);
 	}
 
 	int CountStanding(){
