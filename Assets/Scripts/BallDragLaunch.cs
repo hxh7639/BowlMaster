@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent (typeof(Ball))]
-public class DragLaunch : MonoBehaviour {
+public class BallDragLaunch : MonoBehaviour {
 
 	private Ball ball;
 	private Vector3 launchVelocity; // course declared this in the method, only make it available to the methods that needs it, don't put everything at this level

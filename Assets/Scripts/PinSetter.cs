@@ -22,7 +22,7 @@ public class PinSetter : MonoBehaviour {
 	void Update () {
 		pinText.text = CountStanding ().ToString ();
 		if (ballEnteredBox){        // if ball has entered the box
-           	CheckStanding();
+           	UpdateSettledPinCount();
         }
 	}
 
@@ -56,7 +56,7 @@ public class PinSetter : MonoBehaviour {
 		return standingPinCount;
 	}
 
-    void CheckStanding (){
+    void UpdateSettledPinCount (){
         // update the lastStandingCount
         // call PinsHaveSettled() when they have
         int currentStanding = CountStanding();
@@ -80,14 +80,6 @@ public class PinSetter : MonoBehaviour {
     void PinsHaveSettled() {
         pinText.color = Color.green;
 
-    }
-
-    void OnTriggerExit (Collider collider){
-        GameObject thingLeftBox = collider.gameObject;
-        if (thingLeftBox.GetComponent<Pin>())
-        {
-            Destroy(thingLeftBox);
-        } 
     }
 
 	void OnTriggerEnter (Collider collider) {
