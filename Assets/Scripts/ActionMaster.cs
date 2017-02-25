@@ -15,17 +15,26 @@ public class ActionMaster{
 			throw new UnityException ("Not sure what to return!");
 		}
 
-		// Other behaviour
+		// Other behaviour, e.g. last frame
 
 		if (pins == 10) {
-			return Action.EndTurn;
-		}
+            bowl += 2;
+            return Action.EndTurn;
+        }
 
 		// If its the first bowl of a frame
 		// return Action.Tidy
-		if(bowl % 2 == 0){   // End of frame
-			
-		}
+        if (bowl % 2 != 0)
+        {   // Mid Frame (or last frame)
+            bowl += 1;
+            return Action.Tidy;
+        }
+        else if (bowl % 2 == 0){  // End of frame
+            bowl +=1;
+            return Action.EndTurn;
+        }
+
+
 
 		throw new UnityException ("Not sure what to return!");
 	}
