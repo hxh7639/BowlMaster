@@ -19,36 +19,44 @@ public class ActionMaster{
             return Action.EndGame;
         }
 
-        //19
-        if (bowl == 19 && Bowl21Awarded())
-        {
-            bowl += 1;
-            return Action.Rest;
-        }else if (bowl == 19 && !Bowl21Awarded())
-        {
-            bowl += 1;
-            return Action.Tidy;
+        //@ frame 19
+		if (bowl == 19){
+			if (Bowl21Awarded()){
+				bowl += 1;
+            	return Action.Rest;
+			} else if(!Bowl21Awarded()){
+				bowl += 1;
+            	return Action.Tidy;
+			}
+		}
+
+        //@ frame 20
+
+		if (bowl == 20){
+			if (!Bowl21Awarded()){  //if no strike/spare
+				return Action.EndGame;
+			} else if(Bowl21AwardedOn19() && pins!=10){  // if no strike on frame 19
+				bowl += 1;
+            	return Action.Tidy;
+			}else {   // else you got a spare on 20
+				bowl += 1;
+            	return Action.Rest;
+			}
+		}
+
+        // strike and spare
+        if (pins ==10){
+			if (bowl % 2 != 0){ //Strike
+				bowl += 2;
+            	return Action.EndTurn;
+			} else if (bowl % 2 == 0){ //Spare
+				bowl += 1;
+            	return Action.EndTurn;
+			}
+
         }
 
-        //20
-        if (bowl == 20 && !Bowl21Awarded())
-        {
-            return Action.EndGame;
-        }
-        else if (bowl == 20 && Bowl21AwardedOn19())
-        {
-            bowl += 1;
-            return Action.Tidy;
-        }
-        else if (bowl == 20){
-            bowl += 1;
-            return Action.Rest;
-        }
 
-		if (pins == 10) {
-            bowl += 2;
-            return Action.EndTurn;
-        }
 
 		// If its the first bowl of a frame
 		// return Action.Tidy
