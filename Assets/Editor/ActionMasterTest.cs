@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class ActionMasterTest {
 	private ActionMaster.Action endTurn = ActionMaster.Action.EndTurn;
 	private ActionMaster.Action tidy = ActionMaster.Action.Tidy;
-    private ActionMaster.Action reset = ActionMaster.Action.Rest;
+    private ActionMaster.Action reset = ActionMaster.Action.Reset;
     private ActionMaster.Action endGame = ActionMaster.Action.EndGame;
     private ActionMaster actionMaster;
 

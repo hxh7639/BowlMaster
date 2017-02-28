@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActionMaster{
 
-	public enum Action {Tidy, Rest, EndTurn, EndGame};
+	public enum Action {Tidy, Reset, EndTurn, EndGame};
 
 	private int[] bowls = new int[21];
 	private int bowl = 1;
@@ -23,7 +23,7 @@ public class ActionMaster{
 		if (bowl == 19){
 			if (Bowl21Awarded()){
 				bowl += 1;
-            	return Action.Rest;
+            	return Action.Reset;
 			} else if(!Bowl21Awarded()){
 				bowl += 1;
             	return Action.Tidy;
@@ -40,7 +40,7 @@ public class ActionMaster{
             	return Action.Tidy;
 			}else {   // else you got a spare on 20
 				bowl += 1;
-            	return Action.Rest;
+            	return Action.Reset;
 			}
 		}
 
