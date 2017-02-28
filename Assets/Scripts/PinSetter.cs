@@ -8,11 +8,11 @@ public class PinSetter : MonoBehaviour {
     public int lastStandingCount = -1;
 	public Text pinText;
 	public GameObject pinSet;
+	public bool ballOutOfPlay = false;
 
     private Ball ball;
     private float lastChangeTime;
     private int lastSettledCount = 10;
-    private bool ballEnteredBox = false;
     private ActionMaster actionMaster = new ActionMaster();
 	private Animator animator;
 
@@ -25,8 +25,9 @@ public class PinSetter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		pinText.text = CountStanding ().ToString ();
-		if (ballEnteredBox){        // if ball has entered the box
-           	UpdateSettledPinCount();
+		if (ballOutOfPlay){        // if ball has entered the box
+			pinText.color = Color.yellow;
+			UpdateSettledPinCount();
         }
 	}
 
@@ -100,21 +101,12 @@ public class PinSetter : MonoBehaviour {
 
 
 		lastStandingCount = -1; // reset lastStandingcount
-        ballEnteredBox = false; // reset ball enter box status.
+		ballOutOfPlay = false; // reset ball enter box status.
 		ball.Reset();
         pinText.color = Color.green;
 
     }
 
-	void OnTriggerEnter (Collider collider) {
-        GameObject thingHit = collider.gameObject;
-        // ball enters play box
-        if (thingHit.GetComponent<Ball>())
-        {
-            ballEnteredBox = true;
-            pinText.color = Color.red;
-        }
-    }
 
 
 }
