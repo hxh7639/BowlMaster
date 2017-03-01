@@ -33,6 +33,7 @@ public class Ball : MonoBehaviour {
         rigidBody.useGravity = false;
         rigidBody.velocity = Vector3.zero; // I used "new Vector3 (0,0,0);" instead
         rigidBody.angularVelocity = Vector3.zero;
+		gameObject.transform.rotation = Quaternion.identity;
 }
 
 
