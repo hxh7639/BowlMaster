@@ -4,17 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
-
-    public int lastStandingCount = -1;
 	public Text pinText;
 	public GameObject pinSet;
 	public bool ballOutOfPlay = false;
+	public ActionMaster actionMaster = new ActionMaster(); // we need it on the top level because we only want one actionMaster. 
 
-    private Ball ball;
+	private int lastStandingCount = -1;
+	private int lastSettledCount = 10;
     private float lastChangeTime;
-    private int lastSettledCount = 10;
-    private ActionMaster actionMaster = new ActionMaster();
 	private Animator animator;
+	private Ball ball;
 
 	// Use this for initialization
 	void Start () {
@@ -82,6 +81,7 @@ public class PinSetter : MonoBehaviour {
     	int standing = CountStanding();
     	int pinsFallen = lastSettledCount - standing;
     	lastSettledCount = standing;
+
 
 		ActionMaster.Action action = actionMaster.Bowl(pinsFallen); // calling action = (pass in pinsFallen)and whichever enum it gets
 		Debug.Log ("pins fallend" + pinsFallen + " // "+ action);
