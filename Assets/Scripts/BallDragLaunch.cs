@@ -35,6 +35,7 @@ public class BallDragLaunch : MonoBehaviour {
 	}
 
 	public void DragEnd(){
+	//if (ball.inPlay == false){    to stop launching ball during play
 	swipPositionEnd = Input.mousePosition;
 	swipTimeEnd = Time.time;
 	float swipDuration = swipTimeEnd - swipTimeStart;

@@ -23,6 +23,7 @@ public class Pin : MonoBehaviour {
 			rigidBody.useGravity = false;
 			rigidBody.velocity = Vector3.zero; // I added to stop the pins from moving
 			rigidBody.angularVelocity = Vector3.zero; // I added to stop the pins from moving
+			gameObject.transform.rotation = Quaternion.Euler(-90,0,0);
 			transform.Translate (new Vector3(0,distToRaise,0), Space.World);  // transform.positon += supposed to work as well
 		}
 	}

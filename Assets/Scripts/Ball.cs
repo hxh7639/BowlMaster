@@ -30,10 +30,11 @@ public class Ball : MonoBehaviour {
     public void Reset(){
         inPlay = false;
         gameObject.transform.position = ballStartPos;
+		gameObject.transform.rotation = Quaternion.identity;  // gameObject not needed because it will already point to the right gameObject.
         rigidBody.useGravity = false;
         rigidBody.velocity = Vector3.zero; // I used "new Vector3 (0,0,0);" instead
         rigidBody.angularVelocity = Vector3.zero;
-		gameObject.transform.rotation = Quaternion.identity;
+
 }
 
 
