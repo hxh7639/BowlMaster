@@ -16,6 +16,7 @@ public class ActionMaster{
 		foreach (int pinFall in pinFalls) {
 			currentAction = am.Bowl (pinFall);
 		}
+		return currentAction;
 	}
 
 	public Action Bowl (int pins){
