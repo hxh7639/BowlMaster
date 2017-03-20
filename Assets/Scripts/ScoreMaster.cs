@@ -25,7 +25,7 @@ public class ScoreMaster {
 //        {
 //            if (frame.Count < 10) // test if last frame
 //            {
-//                if ((rolls[i - 1] + rolls[i]) < 10) //test if open frame 
+//				if ((rolls[i - 1] + rolls[i]) < 10) //test if open frame (if no strike/spare)
 //                { 
 //                    frame.Add(rolls[i - 1] + rolls[i]);
 //                }
@@ -45,9 +45,17 @@ public class ScoreMaster {
 //        return frame;
 //    }
 
-        for (int i = 1; i < (rolls.Count+1); i++) // andy
+        for (int i = 0; i < (rolls.Count); i++) // andy
         {
-            if (i % 2 == 0) // scoring every 2 rolls, if not 2 rolls yet just return
+			if(rolls [i] >=10) //strike 1st frame
+        	{return frame;}
+			if(i==1 && rolls[i-1] + rolls [i] >=10) //spare 1st frame
+			{return frame;}
+			if (i > 2 && rolls[i-2] ==10){ //if strike/spare
+				i++;
+				frame.Add(rolls[i-2] + rolls[i-1] + rolls [i]);
+			}
+            if (((i-1)) % 2 == 0) // if its the 2nd roll and no strike, add pervious roll + this roll to frame
             frame.Add (rolls[i-1] + rolls [i]);
         }
         return frame;
