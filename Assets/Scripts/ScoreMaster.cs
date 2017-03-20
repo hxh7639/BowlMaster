@@ -47,16 +47,17 @@ public class ScoreMaster {
 
         for (int i = 0; i < (rolls.Count); i++) // andy
         {
-			if(rolls [i] >=10) //strike 1st frame
-        	{return frame;}
-			if(i==1 && rolls[i-1] + rolls [i] >=10) //spare 1st frame
+			if(rolls [i] >=10) //strike at current frame
+			{i++;
+			return frame;}
+			if(i>0 && rolls[i-1] + rolls [i] >=10) //spare at current frame (this would add the wrong frames together atm.)
 			{return frame;}
-			if (i > 2 && rolls[i-2] ==10){ //if strike/spare
-				i++;
-				frame.Add(rolls[i-2] + rolls[i-1] + rolls [i]);
+
+			if (i > 1 && rolls [i - 2] == 10 || i > 1 && rolls [i - 1] + rolls [i] >= 10) {// handle pervious strike/spare
+				frame.Add (rolls [i - 2] + rolls [i - 1] + rolls [i]);
+			} else if (i > 0 && (i-1) % 2 ==0) {
+				frame.Add (rolls [i - 1] + rolls [i]);
 			}
-            if (((i-1)) % 2 == 0) // if its the 2nd roll and no strike, add pervious roll + this roll to frame
-            frame.Add (rolls[i-1] + rolls [i]);
         }
         return frame;
 
