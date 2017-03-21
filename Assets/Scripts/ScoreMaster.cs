@@ -47,22 +47,47 @@ public class ScoreMaster {
 
         for (int i = 0; i < (rolls.Count); i++) // andy
         {
-
-			if(i > 0 && (i-1) % 2 ==0){
-				if(i>0 && (rolls[i-1] + rolls [i]) <10) //if no spare
-				{
-				frame.Add (rolls [i - 1] + rolls [i]);
-				}
-			}else if (i > 1 && rolls [i - 2] == 10 ) {// handle pervious strike
+        	if (i > 1 && rolls [i - 2] == 10 ) {// handle pervious strike
 				frame.Add (rolls [i - 2] + rolls [i - 1] + rolls [i]);
 				frame.Add (rolls [i - 1] + rolls [i]);
 			}else if(i > 1 && (rolls [i - 2] + rolls [i-1]) >= 10){ //handle pervious spare
 				frame.Add (rolls [i - 2] + rolls [i - 1]+ rolls [i]);
-			}
+			}else if(i>0 && (rolls[i-1] + rolls [i]) <10) //if no spare
+				{
+				frame.Add (rolls [i - 1] + rolls [i]);
+				i++;
+				}
         }
         return frame;
 
     }
+
+
+
+//	for (int i = 0; i < (rolls.Count); i++) // andy quick bakc up
+
+//        {
+//
+//           	if(rolls[i]>=10){
+//
+//			}
+//
+//			if(i > 0 && (i-1) % 2 ==0){
+//				if(i>0 && (rolls[i-1] + rolls [i]) <10) //if no spare
+//				{
+//				frame.Add (rolls [i - 1] + rolls [i]);
+//				}
+//			}else if (i > 1 && rolls [i - 2] == 10 ) {// handle pervious strike
+//				frame.Add (rolls [i - 2] + rolls [i - 1] + rolls [i]);
+//				frame.Add (rolls [i - 1] + rolls [i]);
+//			}else if(i > 1 && (rolls [i - 2] + rolls [i-1]) >= 10){ //handle pervious spare
+//				frame.Add (rolls [i - 2] + rolls [i - 1]+ rolls [i]);
+//			}
+//        }
+//        return frame;
+//
+//    }
+
 
 //        for (int i = 0; i < rolls.Count; i += 2)  // Class
 //        {
