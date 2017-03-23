@@ -19,6 +19,12 @@ public class ScoreMasterTest {
         Assert.AreEqual (testframes.ToList(), ScoreMaster.ScoreFrames (rolls.ToList()));
     }
 
+		[Test]
+		public void T01AndyFixedList () {
+		int[] rolls = { 10, 7,3, 9,0, 10, 0,8, 8,2, 0,6, 10, 10, 10,8,1};
+		int[] fixedRolls = {0, 10, 7,3, 9,0,0, 10, 0,8, 8,2, 0,6, 0, 10, 0, 10, 0, 10,8,1};
+		Assert.AreEqual (fixedRolls.ToList(), ScoreMaster.FixedRolls (rolls.ToList()));
+		}
 
     [Test]
 	public void T01Bowl23 () {
