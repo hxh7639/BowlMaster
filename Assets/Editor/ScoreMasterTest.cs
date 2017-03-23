@@ -19,6 +19,7 @@ public class ScoreMasterTest {
         Assert.AreEqual (testframes.ToList(), ScoreMaster.ScoreFrames (rolls.ToList()));
     }
 
+
     [Test]
 	public void T01Bowl23 () {
 		int[] rolls = {2,3};
