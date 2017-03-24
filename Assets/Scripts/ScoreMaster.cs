@@ -32,27 +32,47 @@ public class ScoreMaster {
 
 
     // Return a list of individual frame scores, NOT cumulative.
-	public static List<int> ScoreFrames (List<int> rolls){
+	public static List<int> ScoreFrames (List<int> fixedRolls){
 		List<int> frame = new List<int> ();
-		List<int> fixedRolls = new List<int> ();
 
-		FixedRolls (rolls.ToList ());
 
 		for (int i = 1; i < (fixedRolls.Count); i++) { // andy quick bakc up
 
 			// never have to do anything to first roll
 			// check starting the 2nd rolls, check every roll
 			// if no strike/spare on the first 2 rolls add them up to frame (otherwise nothing)
-			if ((fixedRolls [i - 1] + fixedRolls [i]) < 10) {
-				frame.Add (fixedRolls [i - 1] + fixedRolls [i]);
+			if (i <= 1) {
+				if ((fixedRolls [i - 1] + fixedRolls [i]) < 10) {
+					frame.Add (fixedRolls [i - 1] + fixedRolls [i]);
+				}
 			}
-			return frame;
 			// if strike/spare on the first 2 rolls, do nothing 
-			// on odd rolls handle spare
+
+			// on 3rd rolls or later
+			if (i > 1) {
+
+
+				if ((fixedRolls.Count) % 2 == 0) { //on even rolls
+					if(fixedRolls[i-2]==10){ // handle previous strike
+						frame.Add ((fixedRolls [i - 2] + fixedRolls [i - 1] + fixedRolls [i]));
+					}
+					if ((fixedRolls [i - 1] + fixedRolls [i]) < 10) { //count rolls
+						frame.Add (fixedRolls [i - 1] + fixedRolls [i]);
+					}
+			
+				} else { // handle spare on odd rolls
+					if ((fixedRolls [i - 2] + fixedRolls [i - 1]) >= 10) {
+						frame.Add ((fixedRolls [i - 2] + fixedRolls [i - 1] + fixedRolls [i]));
+					}
+					return frame;
+				}
+			}
 			// on even rolls handle strike and if no strike, add them to frame
 			// stop adding when you have 10 frames
 		}
+		return frame;
 	}
+}
 
 //		for (int i = 0; i < (fiexedRolls.Count); i++) // andy quick bakc up
 //
