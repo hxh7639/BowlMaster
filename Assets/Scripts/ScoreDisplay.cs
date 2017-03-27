@@ -9,8 +9,12 @@ public class ScoreDisplay : MonoBehaviour {
     public Text[] rollTexts, frameTexts;
 
 
+
+
 	// Use this for initialization
 	void Start () {
+		rollTexts[0].text = "X";
+		frameTexts[1].text = "0";
 
 	}
 	
@@ -18,4 +22,8 @@ public class ScoreDisplay : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public void FillRollCard(List<int>rolls){
+		rolls [-1] = 1;
+    }
 }
