@@ -7,7 +7,7 @@ public class PinSetter : MonoBehaviour {
 
 	public GameObject pinSet;
 
-	public ActionMaster actionMaster = new ActionMaster(); // we need it on the top level because we only want one actionMaster. 
+	public ActionMasterOldCopy actionMaster = new ActionMasterOldCopy(); // we need it on the top level because we only want one actionMaster. 
 
 	private Animator animator;
 	private PinCounter pinCounter;
@@ -43,16 +43,16 @@ public class PinSetter : MonoBehaviour {
 		newPins.transform.position += new Vector3 (0, 15,0);
 	}
 
-	public void PerformAction (ActionMaster.Action action){
-		if(action == ActionMaster.Action.Tidy){
+	public void PerformAction (ActionMasterOldCopy.Action action){
+		if(action == ActionMasterOldCopy.Action.Tidy){
 			animator.SetTrigger("tidyTrigger");
-		} else if(action == ActionMaster.Action.EndTurn){
+		} else if(action == ActionMasterOldCopy.Action.EndTurn){
 			animator.SetTrigger("resetTrigger");
 			pinCounter.Reset();
-		} else if(action == ActionMaster.Action.Reset){
+		} else if(action == ActionMasterOldCopy.Action.Reset){
 			animator.SetTrigger("resetTrigger");
 			pinCounter.Reset();		
-			}  else if(action == ActionMaster.Action.EndGame){
+			}  else if(action == ActionMasterOldCopy.Action.EndGame){
 			throw new UnityException("Don't know how to handle end game");
 		}
 	}
