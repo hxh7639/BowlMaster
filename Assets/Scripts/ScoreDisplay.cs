@@ -24,6 +24,20 @@ public class ScoreDisplay : MonoBehaviour {
 	}
 
 	public void FillRollCard(List<int>rolls){
-		rolls [-1] = 1;
+		// your code here
+    }
+
+    public void FillFrames (List<int> frames){
+    	for (int i=0; i< frames.Count;i++){
+    		frameTexts[i].text = frames[i].ToString();
+    	}
+
+    }
+
+    static string formatrolls (List<int> rolls){
+    	string output ="";
+    	// your code here
+    	return output;
+
     }
 }
