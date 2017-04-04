@@ -13,8 +13,6 @@ public class ScoreDisplay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rollTexts[0].text = "X";
-		frameTexts[1].text = "0";
 
 	}
 	
@@ -39,7 +37,25 @@ public class ScoreDisplay : MonoBehaviour {
 
     public static string Formatrolls (List<int> rolls){
     	string output ="";
-    	// your code here
+
+    	for (int i = 0; i < rolls.Count;i++){
+    		int box = output.Length +1;							// score box (rolls) 1 to 21 
+
+    		if(rolls[i]==0){									// always enter 0 as -
+    			output += "-";
+    		} else if ((box % 2==0 || box==21) && (rolls[i]+rolls[i-1])==10){ 	//spare check
+    			output += "/";
+    		} else if (rolls[i]==10) {							//strike check
+    			if(box > 18){
+    				output += "X";
+    			}else {
+					output += "X ";
+				}    			
+    		}else {
+    		output += rolls[i].ToString();
+    		}
+    	}
+
     	return output;
 
     }
